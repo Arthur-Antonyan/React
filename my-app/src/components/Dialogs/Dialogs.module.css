@@ -1,0 +1,19 @@
+.dialogs {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  justify-content: center;
+}
+.dialogs > div {
+  margin: 25px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+.dialogs div {
+  margin: 25px;
+}
+.user a {
+  color: rgb(77, 87, 180);
+  text-decoration: none;
+}
