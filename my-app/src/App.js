@@ -10,7 +10,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Settings from './components/Settings/Settings';
 import News from './components/News/News';
 
-function App() {
+function App(props) {
   return (
     <BrowserRouter>
       <div className="app-wraper">
@@ -18,8 +18,13 @@ function App() {
         <Nav />
         <div className="app-wraper-content">
           <Routes>
-            <Route path="/dialogs/*" element={<Dialogs />} />
-            <Route path="/profile" element={<Profile />} />
+            {/* <Route path="/dialogs/*" element={<Dialogs messages={props.message} users={props.users} />} />
+            <Route path="/profile" element={<Profile post={props.post} />} /> */}
+            <Route
+              path="/dialogs/*"
+              element={<Dialogs messages={props.content.MessagePage} users={props.content.MessagePage} />}
+            />
+            <Route path="/profile" element={<Profile post={props.content.PostPage} />} />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/news" element={<News />} />
