@@ -4,11 +4,21 @@
   align-items: center;
   justify-content: center;
 }
-.dialogs > div {
+.messages {
   margin: 25px;
-  display: grid;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: flex-end;
+  overflow-y: auto;
+  max-height: 500px;
+}
+.users {
+  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .dialogs div {
   margin: 25px;

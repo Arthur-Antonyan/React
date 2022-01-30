@@ -1,0 +1,19 @@
+.friendAvatar img {
+  height: 35px;
+  width: 35px;
+  border-radius: 100%;
+}
+.friendAvatar p {
+  font-size: 10px;
+  float: left;
+  margin: 5px;
+  vertical-align: center;
+}
+
+.friendAvatar {
+  display: grid;
+  grid-template-columns: 35px 35px 35px;
+  grid-template-rows: 35px 35px;
+  align-items: center;
+  justify-content: center;
+}

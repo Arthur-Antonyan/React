@@ -1,7 +1,7 @@
 .nav {
   grid-area: nav;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px 0;
+  padding: 20px 40px;
   font-size: 1.5em;
   text-align: center;
 }
@@ -11,4 +11,11 @@
 }
 .item .active {
   color: rgb(77, 87, 180);
+  display: block;
+}
+.item .active .item1 {
+  display: block;
+}
+.item1 {
+  display: none;
 }

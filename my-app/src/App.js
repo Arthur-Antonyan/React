@@ -9,25 +9,25 @@ import Music from './components/Music/Music';
 import { BrowserRouter } from 'react-router-dom';
 import Settings from './components/Settings/Settings';
 import News from './components/News/News';
+import Friends from './components/Friends/Friends';
 
 function App(props) {
   return (
     <BrowserRouter>
       <div className="app-wraper">
         <Header />
-        <Nav />
+        <Nav friends={props.content.MessagePage} />
         <div className="app-wraper-content">
           <Routes>
-            {/* <Route path="/dialogs/*" element={<Dialogs messages={props.message} users={props.users} />} />
-            <Route path="/profile" element={<Profile post={props.post} />} /> */}
             <Route
               path="/dialogs/*"
-              element={<Dialogs messages={props.content.MessagePage} users={props.content.MessagePage} />}
+              element={<Dialogs messages={props.content.MessagePage} users={props.content.MessagePage} fn={props.fn} />}
             />
-            <Route path="/profile" element={<Profile post={props.content.PostPage} />} />
+            <Route path="/profile" element={<Profile posts={props.content.PostPage} />} />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/news" element={<News />} />
+            <Route path="/friends" element={<Friends />} />
           </Routes>
         </div>
       </div>

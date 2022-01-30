@@ -1,5 +1,8 @@
+import styles from './Messages.module.css';
 export function Messages(props) {
-  // let message = props.messages.map((item) => item.message);
-  // return <div className={props.className}>{message}</div>;
-  return props.messages.map((item) => <div>{item.message}</div>);
+  return props.messages.map((item) => (
+    <div className={styles.message}>
+      <p>{item.message}</p>
+    </div>
+  ));
 }

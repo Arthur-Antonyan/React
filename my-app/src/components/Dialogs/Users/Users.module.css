@@ -1,0 +1,16 @@
+.user {
+  position: relative;
+  left: -50px;
+}
+.user img {
+  height: 35px;
+  width: 35px;
+  border-radius: 100%;
+}
+
+.user a {
+  position: absolute;
+  margin-top: 8px;
+  text-decoration: none;
+  margin-left: 5px;
+}

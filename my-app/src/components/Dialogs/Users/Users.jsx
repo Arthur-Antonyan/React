@@ -1,13 +1,10 @@
 import { NavLink } from 'react-router-dom';
+import styles from './Users.module.css';
 
 export function User(props) {
-  // return (
-  //   <div className={props.className}>
-  //     <NavLink to={'/dialogs/' + props.path}>{props.name}</NavLink>
-  //   </div>
-  // );
   return props.users.map((item) => (
-    <div>
+    <div className={styles.user}>
+      <img src={item.img} alt="ava" />
       <NavLink to={'/dialogs/' + item.path}>{item.name}</NavLink>
     </div>
   ));

@@ -3,7 +3,7 @@
   grid-template-areas:
     'header header header header header'
     'nav content content content content'
-    'nav content content content content'
+    'nav  content content content content'
     'nav content content content content';
   background-color: #2196f3;
   padding: 10px;
