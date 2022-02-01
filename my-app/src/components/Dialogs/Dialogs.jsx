@@ -13,7 +13,12 @@ const Dialogs = (props) => {
       </div>
       <div className={styles.messages}>
         <Messages messages={props.messages.message} />
-        <WriteMessage write={props.messages.message} fn={props.fn} />
+        <WriteMessage
+          write={props.messages.message}
+          fn={props.fn}
+          newMessage={props.newMessage}
+          messageAreaValue={props.messageAreaValue}
+        />
       </div>
     </div>
   );

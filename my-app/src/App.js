@@ -21,9 +21,27 @@ function App(props) {
           <Routes>
             <Route
               path="/dialogs/*"
-              element={<Dialogs messages={props.content.MessagePage} users={props.content.MessagePage} fn={props.fn} />}
+              element={
+                <Dialogs
+                  messages={props.content.MessagePage}
+                  users={props.content.MessagePage}
+                  fn={props.fn}
+                  newMessage={props.newMessage}
+                  messageAreaValue={props.messageAreaValue}
+                />
+              }
             />
-            <Route path="/profile" element={<Profile posts={props.content.PostPage} />} />
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  posts={props.content.PostPage}
+                  addPost={props.addPost}
+                  onChange={props.onChange}
+                  areaValue={props.areaValue}
+                />
+              }
+            />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/news" element={<News />} />

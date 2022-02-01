@@ -6,7 +6,7 @@ import { AddPost } from './AddPost/AddPost';
 export function Profile(props) {
   return (
     <div>
-      <AddPost />
+      <AddPost addPost={props.addPost} onChange={props.onChange} areaValue={props.areaValue} />
       <MyPosts posts={props.posts.post} />
     </div>
   );

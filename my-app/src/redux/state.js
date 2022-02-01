@@ -1,5 +1,11 @@
+import { renderDom } from '../render';
+// let renderDom = () => {
+//   console.log(1);
+// };
+
 let state = {
   MessagePage: {
+    newMessage: '',
     message: [
       { message: 'Hello albviebieqblqebflqibf' },
       {
@@ -26,13 +32,31 @@ let state = {
   },
   PostPage: {
     post: [
-      { text: 'Post1', like: 'Like3' },
-      { text: 'Post2', like: 'Like4' },
+      { id: 1, text: 'Post1', like: 'Like3' },
+      { id: 2, text: 'Post2', like: 'Like4' },
     ],
+    newPost: '',
   },
 };
-export const send = (text) => {
-  state.MessagePage.message.push({ message: text });
+export const send = () => {
+  state.MessagePage.message.push({ message: state.MessagePage.newMessage });
+  state.MessagePage.newMessage = '';
+  renderDom(state);
+};
+export const newMessage = (text) => {
+  state.MessagePage.newMessage = text;
+  renderDom(state);
 };
 
+export const addPost = () => {
+  state.PostPage.post.push({ id: 3, text: state.PostPage.newPost, like: 'Like 5' });
+  state.PostPage.newPost = '';
+  renderDom(state);
+};
+export const change = (text) => {
+  state.PostPage.newPost = text;
+  renderDom(state);
+};
 export default state;
+
+window.state = state;
