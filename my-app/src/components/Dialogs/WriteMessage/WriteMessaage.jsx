@@ -9,6 +9,7 @@ export function WriteMessage(props) {
   const onChange = () => {
     let text = link.current.value;
     props.newMessage(text);
+    // props.newMessage.newMessage(text);
   };
   return (
     <div className={styles.write}>

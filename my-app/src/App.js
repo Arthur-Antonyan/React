@@ -12,6 +12,7 @@ import News from './components/News/News';
 import Friends from './components/Friends/Friends';
 
 function App(props) {
+  
   return (
     <BrowserRouter>
       <div className="app-wraper">
