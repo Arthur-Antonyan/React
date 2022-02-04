@@ -3,13 +3,13 @@ import styles from './WriteMessage.module.css';
 export function WriteMessage(props) {
   let link = React.createRef();
   const send = () => {
-    // let text = link.current.value;
-    props.fn();
+    // props.fn();
+    props.dispatch({ type: 'SEND-NEW-MESSAGE' });
   };
   const onChange = () => {
     let text = link.current.value;
-    props.newMessage(text);
-    // props.newMessage.newMessage(text);
+    // props.newMessage(text);
+    props.dispatch({ type: 'WRITE-NEW-MESSAGE', text: text });
   };
   return (
     <div className={styles.write}>

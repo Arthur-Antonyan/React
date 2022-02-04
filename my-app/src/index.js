@@ -12,14 +12,14 @@ let renderDom = (state) => {
       {/* <App message={messages} users={users} post={post} /> */}
       <App
         content={store.getstate()}
-        // fn={send}
-        // newMessage={newMessage}
-        addPost={store.addPost.bind(store)}
-        onChange={store.change.bind(store)}
+        // addPost={store.addPost.bind(store)}
+        dispatch={store.dispatch.bind(store)}
+        // onChange={store.change.bind(store)}
+
         areaValue={store.getstate().PostPage.newPost}
-        // messageAreaValue={state.MessagePage.newMessage}
-        fn={store.send.bind(store)}
-        newMessage={store.newMessage.bind(store)}
+        // fn={store.send.bind(store)}
+        // newMessage={store.newMessage.bind(store)}
+
         messageAreaValue={store.getstate().MessagePage.newMessage}
       />
     </React.StrictMode>,

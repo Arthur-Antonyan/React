@@ -15,8 +15,9 @@ const Dialogs = (props) => {
         <Messages messages={props.messages.message} />
         <WriteMessage
           write={props.messages.message}
-          fn={props.fn}
-          newMessage={props.newMessage}
+          // fn={props.fn}
+          // newMessage={props.newMessage}
+          dispatch={props.dispatch}
           messageAreaValue={props.messageAreaValue}
         />
       </div>

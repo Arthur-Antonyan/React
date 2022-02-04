@@ -12,7 +12,6 @@ import News from './components/News/News';
 import Friends from './components/Friends/Friends';
 
 function App(props) {
-  
   return (
     <BrowserRouter>
       <div className="app-wraper">
@@ -26,8 +25,9 @@ function App(props) {
                 <Dialogs
                   messages={props.content.MessagePage}
                   users={props.content.MessagePage}
-                  fn={props.fn}
-                  newMessage={props.newMessage}
+                  // fn={props.fn}
+                  // newMessage={props.newMessage}
+                  dispatch={props.dispatch}
                   messageAreaValue={props.messageAreaValue}
                 />
               }
@@ -37,8 +37,9 @@ function App(props) {
               element={
                 <Profile
                   posts={props.content.PostPage}
-                  addPost={props.addPost}
-                  onChange={props.onChange}
+                  // addPost={props.addPost}
+                  // onChange={props.onChange}
+                  dispatch={props.dispatch}
                   areaValue={props.areaValue}
                 />
               }

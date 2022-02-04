@@ -4,13 +4,13 @@ import styles from './AddPost.module.css';
 export function AddPost(props) {
   let link = React.createRef();
   const post = () => {
-    // let text = link.current.value;
-    props.addPost();
-    // link.current.value = '';
+    // props.addPost();
+    props.dispatch({ type: 'ADD-POST' });
   };
   const onChange = () => {
     let text = link.current.value;
-    props.onChange(text);
+    // props.onChange(text);
+    props.dispatch({ type: 'CHANGE-NEWPOST-TEXT', text: text });
   };
   return (
     <div className={styles.content}>
