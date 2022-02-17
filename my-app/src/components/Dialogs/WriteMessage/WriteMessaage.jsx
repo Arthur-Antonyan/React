@@ -1,15 +1,20 @@
 import React from 'react';
+import { sendNewMessageActionCreator, writeNewMessageActionCreator } from '../../../redux/state';
 import styles from './WriteMessage.module.css';
+
 export function WriteMessage(props) {
   let link = React.createRef();
   const send = () => {
     // props.fn();
-    props.dispatch({ type: 'SEND-NEW-MESSAGE' });
+    // props.dispatch({ type: 'SEND-NEW-MESSAGE' });
+    props.dispatch(sendNewMessageActionCreator());
   };
   const onChange = () => {
     let text = link.current.value;
     // props.newMessage(text);
-    props.dispatch({ type: 'WRITE-NEW-MESSAGE', text: text });
+    // props.dispatch({ type: 'WRITE-NEW-MESSAGE', text: text });
+    // debugger;
+    props.dispatch(writeNewMessageActionCreator(text));
   };
   return (
     <div className={styles.write}>

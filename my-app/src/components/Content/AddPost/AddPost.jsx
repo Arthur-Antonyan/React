@@ -1,16 +1,19 @@
 import React from 'react';
+import { addPOstActionCreator, changeNewPostTextActionCreator } from '../../../redux/state';
 import styles from './AddPost.module.css';
 
 export function AddPost(props) {
   let link = React.createRef();
   const post = () => {
     // props.addPost();
-    props.dispatch({ type: 'ADD-POST' });
+    // props.dispatch({ type: 'ADD-POST' });
+    props.dispatch(addPOstActionCreator());
   };
   const onChange = () => {
     let text = link.current.value;
     // props.onChange(text);
-    props.dispatch({ type: 'CHANGE-NEWPOST-TEXT', text: text });
+    // props.dispatch({ type: 'CHANGE-NEWPOST-TEXT', text: text });
+    props.dispatch(changeNewPostTextActionCreator(text));
   };
   return (
     <div className={styles.content}>
