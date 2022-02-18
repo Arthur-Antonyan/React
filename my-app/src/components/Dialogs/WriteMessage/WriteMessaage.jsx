@@ -1,5 +1,5 @@
 import React from 'react';
-import { sendNewMessageActionCreator, writeNewMessageActionCreator } from '../../../redux/state';
+import { sendNewMessageActionCreator, writeNewMessageActionCreator } from '../../../redux/messagePage-reducer';
 import styles from './WriteMessage.module.css';
 
 export function WriteMessage(props) {

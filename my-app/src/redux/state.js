@@ -1,9 +1,6 @@
-// import { renderDom } from '../render';
-// let renderDom = () => {};
-const WRITE_NEW_MESSAGE = 'WRITE-NEW-MESSAGE';
-const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE';
-const CHANGE_NEW_POST_TEXT = 'CHANGE-NEWPOST-TEXT';
-const ADD_POST = 'ADD-POST';
+import messagePageReducer from './messagePage-reducer';
+import postPageReducer from './postPage-reducer';
+
 export let store = {
   _renderDom() {}, //callsubscriber
   subscribe(observer) {
@@ -44,63 +41,13 @@ export let store = {
       newPost: '',
     },
   },
-  getstate() {
+  getState() {
     return this._state;
   },
 
-  _send() {
-    this._state.MessagePage.message.push({ message: this._state.MessagePage.newMessage });
-    this._state.MessagePage.newMessage = '';
-    this._renderDom(this._state);
-  },
-  _newMessage(text) {
-    this._state.MessagePage.newMessage = text;
-    this._renderDom(this._state);
-  },
-
-  _addPost() {
-    this._state.PostPage.post.push({ id: 3, text: this._state.PostPage.newPost, like: 'Like 5' });
-    this._state.PostPage.newPost = '';
-    this._renderDom(this._state);
-  },
-  _change(text) {
-    this._state.PostPage.newPost = text;
-    this._renderDom(this._state);
-  },
-
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      // this._state.PostPage.post.push({ id: 3, text: this._state.PostPage.newPost, like: 'Like 5' });
-      // this._state.PostPage.newPost = '';
-      // this._renderDom(this._state);
-      this._addPost();
-    } else if (action.type === CHANGE_NEW_POST_TEXT) {
-      // this._state.PostPage.newPost = action.text;
-      // this._renderDom(this._state);
-      this._change(action.text);
-    } else if (action.type === WRITE_NEW_MESSAGE) {
-      // this._state.MessagePage.newMessage = action.text;
-      // this._renderDom(this._state);
-      this._newMessage(action.text);
-    } else if (action.type === SEND_NEW_MESSAGE) {
-      // this._state.MessagePage.message.push({ message: this._state.MessagePage.newMessage });
-      // this._state.MessagePage.newMessage = '';
-      // this._renderDom(this._state);
-      this._send();
-    }
+    this._state.PostPage = postPageReducer(this._state.PostPage, action);
+    this._state.MessagePage = messagePageReducer(this._state.MessagePage, action);
+    this._renderDom(this._state);
   },
-};
-export const writeNewMessageActionCreator = (text) => {
-  // debugger;
-  return { type: WRITE_NEW_MESSAGE, text: text };
-};
-export const sendNewMessageActionCreator = () => {
-  return { type: SEND_NEW_MESSAGE };
-};
-
-export const changeNewPostTextActionCreator = (text) => {
-  return { type: CHANGE_NEW_POST_TEXT, text: text };
-};
-export const addPOstActionCreator = () => {
-  return { type: ADD_POST };
 };
