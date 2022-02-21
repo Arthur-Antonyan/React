@@ -4,6 +4,7 @@ import styles from './Dialogs.module.css';
 import { Messages } from './Messages/Messaages';
 import { User } from './Users/Users';
 import { WriteMessage } from './WriteMessage/WriteMessaage';
+import { WriteMessageContainer } from './WriteMessage/WriteMessaageContainer';
 
 const Dialogs = (props) => {
   return (
@@ -12,13 +13,13 @@ const Dialogs = (props) => {
         <User users={props.users.user} />
       </div>
       <div className={styles.messages}>
-        <Messages messages={props.messages.message} />
-        <WriteMessage
-          write={props.messages.message}
-          // fn={props.fn}
-          // newMessage={props.newMessage}
-          dispatch={props.dispatch}
-          messageAreaValue={props.messageAreaValue}
+        {/* <Messages messages={props.messages.message} /> */}
+        <Messages store={props.store} />
+        <WriteMessageContainer
+          // write={props.messages.message}
+          // dispatch={props.dispatch}
+          // messageAreaValue={props.messageAreaValue}
+          store={props.store}
         />
       </div>
     </div>

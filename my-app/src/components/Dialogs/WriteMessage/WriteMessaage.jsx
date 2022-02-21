@@ -5,16 +5,16 @@ import styles from './WriteMessage.module.css';
 export function WriteMessage(props) {
   let link = React.createRef();
   const send = () => {
-    // props.fn();
+    props.sendMessage();
     // props.dispatch({ type: 'SEND-NEW-MESSAGE' });
-    props.dispatch(sendNewMessageActionCreator());
+    // props.dispatch(sendNewMessageActionCreator());
   };
   const onChange = () => {
     let text = link.current.value;
-    // props.newMessage(text);
+    props.newMessage(text);
     // props.dispatch({ type: 'WRITE-NEW-MESSAGE', text: text });
     // debugger;
-    props.dispatch(writeNewMessageActionCreator(text));
+    // props.dispatch(writeNewMessageActionCreator(text));
   };
   return (
     <div className={styles.write}>

@@ -11,9 +11,10 @@ let renderDom = (state) => {
   ReactDOM.render(
     <App
       content={store.getState()}
-      dispatch={store.dispatch.bind(store)}
-      areaValue={store.getState().PostPage.newPost}
-      messageAreaValue={store.getState().MessagePage.newMessage}
+      // dispatch={store.dispatch.bind(store)}
+      // areaValue={store.getState().PostPage.newPost}
+      // messageAreaValue={store.getState().MessagePage.newMessage}
+      store={store}
     />,
 
     document.getElementById('root')

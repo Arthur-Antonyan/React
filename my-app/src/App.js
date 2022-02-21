@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { Header } from './components/Header/Header';
 import { Nav } from './components/Nav/Nav';
@@ -22,26 +21,28 @@ function App(props) {
             <Route
               path="/dialogs/*"
               element={
-                <Dialogs
-                  messages={props.content.MessagePage}
-                  users={props.content.MessagePage}
-                  // fn={props.fn}
-                  // newMessage={props.newMessage}
-                  dispatch={props.dispatch}
-                  messageAreaValue={props.messageAreaValue}
-                />
+                // <Dialogs
+                //   messages={props.content.MessagePage}
+                //   users={props.content.MessagePage}
+                //   // fn={props.fn}
+                //   // newMessage={props.newMessage}
+                //   dispatch={props.dispatch}
+                //   messageAreaValue={props.messageAreaValue}
+                // />
+                <Dialogs store={props.store} users={props.content.MessagePage} />
               }
             />
             <Route
               path="/profile"
               element={
-                <Profile
-                  posts={props.content.PostPage}
-                  // addPost={props.addPost}
-                  // onChange={props.onChange}
-                  dispatch={props.dispatch}
-                  areaValue={props.areaValue}
-                />
+                // <Profile
+                //   posts={props.content.PostPage}
+                //   // addPost={props.addPost}
+                //   // onChange={props.onChange}
+                //   dispatch={props.dispatch}
+                //   areaValue={props.areaValue}
+                // />
+                <Profile store={props.store} />
               }
             />
             <Route path="/music" element={<Music />} />

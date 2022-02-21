@@ -45,7 +45,6 @@ function messagePageReducer(state = initialState, action) {
 export default messagePageReducer;
 
 export const writeNewMessageActionCreator = (text) => {
-  // debugger;
   return { type: WRITE_NEW_MESSAGE, text: text };
 };
 export const sendNewMessageActionCreator = () => {
