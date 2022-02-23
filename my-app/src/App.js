@@ -15,36 +15,20 @@ function App(props) {
     <BrowserRouter>
       <div className="app-wraper">
         <Header />
-        <Nav friends={props.content.MessagePage} />
+        {/* <Nav friends={props.content.MessagePage} /> */}
+        <Nav store={props.store} />
         <div className="app-wraper-content">
           <Routes>
             <Route
               path="/dialogs/*"
               element={
-                // <Dialogs
-                //   messages={props.content.MessagePage}
-                //   users={props.content.MessagePage}
-                //   // fn={props.fn}
-                //   // newMessage={props.newMessage}
-                //   dispatch={props.dispatch}
-                //   messageAreaValue={props.messageAreaValue}
-                // />
-                <Dialogs store={props.store} users={props.content.MessagePage} />
+                <Dialogs
+                  store={props.store}
+                  // users={props.content.MessagePage}
+                />
               }
             />
-            <Route
-              path="/profile"
-              element={
-                // <Profile
-                //   posts={props.content.PostPage}
-                //   // addPost={props.addPost}
-                //   // onChange={props.onChange}
-                //   dispatch={props.dispatch}
-                //   areaValue={props.areaValue}
-                // />
-                <Profile store={props.store} />
-              }
-            />
+            <Route path="/profile" element={<Profile store={props.store} />} />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/news" element={<News />} />

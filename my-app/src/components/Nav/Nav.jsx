@@ -36,7 +36,8 @@ export function Nav(props) {
         <NavLink to="/friends" className={(navData) => (navData.isActive ? styles.active : '')}>
           Friends
           <div className={styles.item1}>
-            <Friends friends={props.friends.user} />
+            {/* <Friends friends={props.friends.user} /> */}
+            <Friends store={props.store} />
           </div>
         </NavLink>
       </div>

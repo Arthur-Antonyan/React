@@ -10,7 +10,8 @@ const Dialogs = (props) => {
   return (
     <div className={styles.dialogs}>
       <div className={styles.users}>
-        <User users={props.users.user} />
+        {/* <User users={props.users.user} /> */}
+        <User store={props.store} />
       </div>
       <div className={styles.messages}>
         {/* <Messages messages={props.messages.message} /> */}
