@@ -11,13 +11,22 @@ let initialState = {
 function postPageReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_POST:
-      state.post.push({ id: 3, text: state.newPost, like: 'Like 5' });
-      state.newPost = '';
-      return state;
+      let stateCopy = { ...state };
+      stateCopy.post = [...state.post];
+      // state.post.push({ id: 3, text: state.newPost, like: 'Like 5' });
+      // state.newPost = '';
+      // return state;
+      stateCopy.post.push({ id: 3, text: state.newPost, like: 'Like 5' });
+      stateCopy.newPost = '';
+      return stateCopy;
 
     case CHANGE_NEW_POST_TEXT:
-      state.newPost = action.text;
-      return state;
+      let stateCopy1 = { ...state };
+
+      // state.newPost = action.text;
+      // return state;
+      stateCopy1.newPost = action.text;
+      return stateCopy1;
 
     default:
       return state;

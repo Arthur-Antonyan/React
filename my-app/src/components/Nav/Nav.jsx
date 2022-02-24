@@ -37,7 +37,7 @@ export function Nav(props) {
           Friends
           <div className={styles.item1}>
             {/* <Friends friends={props.friends.user} /> */}
-            <Friends store={props.store} />
+            {/* <Friends store={props.store} /> */}
           </div>
         </NavLink>
       </div>

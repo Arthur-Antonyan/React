@@ -1,10 +1,16 @@
 import React from 'react';
 import { addPOstActionCreator, changeNewPostTextActionCreator } from '../../../redux/postPage-reducer';
+import { Post } from '../MyPosts/Post/Post';
 import styles from './AddPost.module.css';
 
 export function AddPost(props) {
   let link = React.createRef();
-  const post = () => {
+  // let posts = props.store.getState().PostPage.post;
+
+  let posts = props.state.PostPage.post;
+  let post = posts.map((item) => <Post text={item.text} like={item.like} />);
+
+  const addPost = () => {
     props.addPost();
     // props.dispatch({ type: 'ADD-POST' });
     // props.dispatch(addPOstActionCreator());
@@ -19,18 +25,12 @@ export function AddPost(props) {
     <div className={styles.content}>
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1024px-Image_created_with_a_mobile_phone.png" />
       <div className={styles.item}>
-        <textarea
-          onChange={onChange}
-          ref={link}
-          className={styles.textarea}
-          cols="20"
-          rows="3"
-          value={props.areaValue}
-        ></textarea>
+        <textarea onChange={onChange} ref={link} className={styles.textarea} value={props.areaValue}></textarea>
         <div>
-          <button onClick={post}>Add post</button>
+          <button onClick={addPost}>Add post</button>
         </div>
       </div>
+      <div className={styles.post}>{post}</div>
     </div>
   );
 }

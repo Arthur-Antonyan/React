@@ -4,12 +4,21 @@
   align-items: center;
   justify-content: center;
 }
-.messages {
+/* .messages {
   margin: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  overflow-y: auto;
+  max-height: 500px;
+} */
+.messages {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  margin: 25px;
   overflow-y: auto;
   max-height: 500px;
 }

@@ -6,13 +6,13 @@
 
 .write {
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
   margin: 0;
   padding: 0;
-  position: fixed;
-  bottom: 0;
+  /* position: fixed; */
+  /* bottom: 0; */
 }
 .write button {
   border: none;
@@ -21,4 +21,34 @@
   background-color: #2196f3;
   cursor: pointer;
   margin: 2px;
+}
+.message {
+  background-color: #2196f3;
+  width: fit-content;
+  font-size: 0.7em;
+  padding: 5px;
+  border: none;
+  border-radius: 20px 20px 0px 20px;
+  max-width: 40%;
+  margin-right: 0;
+  word-wrap: break-word;
+
+  margin-right: 300px;
+}
+.message p {
+  margin: 0;
+  color: white;
+}
+.messageElements {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-items: flex-end;
+}
+
+.newMessages {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0;
 }

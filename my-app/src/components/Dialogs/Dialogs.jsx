@@ -3,25 +3,19 @@ import { NavLink } from 'react-router-dom';
 import styles from './Dialogs.module.css';
 import { Messages } from './Messages/Messaages';
 import { User } from './Users/Users';
-import { WriteMessage } from './WriteMessage/WriteMessaage';
+// import { WriteMessage } from './WriteMessage/WriteMessaage';
 import { WriteMessageContainer } from './WriteMessage/WriteMessaageContainer';
 
 const Dialogs = (props) => {
   return (
     <div className={styles.dialogs}>
       <div className={styles.users}>
-        {/* <User users={props.users.user} /> */}
         <User store={props.store} />
       </div>
       <div className={styles.messages}>
-        {/* <Messages messages={props.messages.message} /> */}
-        <Messages store={props.store} />
-        <WriteMessageContainer
-          // write={props.messages.message}
-          // dispatch={props.dispatch}
-          // messageAreaValue={props.messageAreaValue}
-          store={props.store}
-        />
+        {/* <Messages store={props.store} /> */}
+        {/* <WriteMessageContainer store={props.store} /> */}
+        <WriteMessageContainer />
       </div>
     </div>
   );

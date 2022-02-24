@@ -15,19 +15,11 @@ function App(props) {
     <BrowserRouter>
       <div className="app-wraper">
         <Header />
-        {/* <Nav friends={props.content.MessagePage} /> */}
+
         <Nav store={props.store} />
         <div className="app-wraper-content">
           <Routes>
-            <Route
-              path="/dialogs/*"
-              element={
-                <Dialogs
-                  store={props.store}
-                  // users={props.content.MessagePage}
-                />
-              }
-            />
+            <Route path="/dialogs/*" element={<Dialogs store={props.store} />} />
             <Route path="/profile" element={<Profile store={props.store} />} />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />

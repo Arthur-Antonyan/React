@@ -8,16 +8,16 @@ export function Profile(props) {
   return (
     <div>
       <AddPostContainer
-        // dispatch={props.dispatch}
-        // areaValue={props.areaValue}
-        store={props.store}
+      // dispatch={props.dispatch}
+      // areaValue={props.areaValue}
+      // store={props.store}
       />
       {/* <AddPost
         dispatch={props.dispatch}
         areaValue={props.areaValue}
       /> */}
       {/* <MyPosts posts={props.posts.post} /> */}
-      <MyPosts store={props.store} />
+      {/* <MyPosts store={props.store} /> */}
     </div>
   );
 }
