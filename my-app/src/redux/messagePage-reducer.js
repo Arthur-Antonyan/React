@@ -30,19 +30,27 @@ let initialState = {
 function messagePageReducer(state = initialState, action) {
   switch (action.type) {
     case WRITE_NEW_MESSAGE:
-      let stateCopy = { ...state };
-      // state.newMessage = action.text;
-      stateCopy.newMessage = action.text;
-      // return state;
-      return stateCopy;
+      return {
+        ...state,
+        newMessage: action.text,
+      };
+    // state.newMessage = action.text;
+    // return state;
+    // stateCopy.newMessage = action.text;
+
+    // return stateCopy;
 
     case SEND_NEW_MESSAGE:
-      let stateCopy1 = { ...state };
-      stateCopy1.message = [...state.message];
-      // state.message.push({ message: state.newMessage });
-      stateCopy1.message.push({ message: stateCopy1.newMessage });
-      stateCopy1.newMessage = '';
-      return stateCopy1;
+      return {
+        ...state,
+        message: [...state.message, { message: state.newMessage }],
+        newMessage: '',
+      };
+    // stateCopy1.message = [...state.message];
+    // // state.message.push({ message: state.newMessage });
+    // stateCopy1.message.push({ message: stateCopy1.newMessage });
+    // stateCopy1.newMessage = '';
+    // return stateCopy1;
 
     default:
       return state;

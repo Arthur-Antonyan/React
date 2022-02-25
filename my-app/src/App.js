@@ -8,7 +8,8 @@ import Music from './components/Music/Music';
 import { BrowserRouter } from 'react-router-dom';
 import Settings from './components/Settings/Settings';
 import News from './components/News/News';
-import Friends from './components/Friends/Friends';
+// import Friends from './components/Friends/Friends';
+import FriendsContainer from './components/Friends/FriendsContainer';
 
 function App(props) {
   return (
@@ -24,7 +25,7 @@ function App(props) {
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/news" element={<News />} />
-            <Route path="/friends" element={<Friends />} />
+            <Route path="/friends" element={<FriendsContainer />} />
           </Routes>
         </div>
       </div>
