@@ -1,67 +1,22 @@
 import React from 'react';
 import styles from './Friends.module.css';
+import * as axios from 'axios';
 
 function Friends(props) {
-  if (props.friends.length == 0) {
-    props.setFriends([
-      {
-        id: 1,
-        img: `https://www.w3schools.com/howto/img_avatar.png`,
-        followed: false,
-        firstName: 'Anton',
-        secondName: 'Ishhutin',
-        status: 'I am boss',
-        locations: {
-          country: 'Belarus',
-          city: 'Minsk',
-        },
-      },
-      {
-        id: 2,
-        img: `https://www.w3schools.com/howto/img_avatar.png`,
-        followed: true,
-        firstName: 'Armen',
-        secondName: 'Nazaryan',
-        status: 'I am boss',
-        locations: {
-          country: 'Belarus',
-          city: 'Minsk',
-        },
-      },
-      {
-        id: 3,
-        img: `https://www.w3schools.com/howto/img_avatar.png`,
-        followed: false,
-        firstName: 'Levon',
-        secondName: 'Aronyan',
-        status: 'I am boss',
-        locations: {
-          country: 'Belarus',
-          city: 'Minsk',
-        },
-      },
-      {
-        id: 4,
-        img: `https://www.w3schools.com/howto/img_avatar.png`,
-        followed: true,
-        firstName: 'Gago',
-        secondName: 'Karapet',
-        status: 'I am boss',
-        locations: {
-          country: 'Belarus',
-          city: 'Minsk',
-        },
-      },
-    ]);
+  function addFriends() {
+    if (props.friends.length == 0) {
+      axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response) => props.setFriends(response.data.items));
+    }
   }
   return (
     <div>
+      <button onClick={addFriends}>Add Friends</button>
       {props.friends.map((item) => {
         return (
           <div key={item.id}>
             <span>
               <div>
-                <img src={item.img} className={styles.img} />
+                <img src="https://www.w3schools.com/howto/img_avatar.png" className={styles.img} />
               </div>
               <div>
                 {item.followed ? (
@@ -85,12 +40,12 @@ function Friends(props) {
             </span>
             <span>
               <span>
-                <div>{item.firstName}</div>
+                <div>{item.name}</div>
                 <div>{item.status}</div>
               </span>
               <span>
-                <div>{item.locations.city}</div>
-                <div>{item.locations.country}</div>
+                <div>{'item.locations.city'}</div>
+                <div>{'item.locations.country'}</div>
               </span>
             </span>
           </div>

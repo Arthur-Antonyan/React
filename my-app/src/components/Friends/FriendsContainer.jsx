@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { followAC, setFriendsAC, unFollowAC } from '../../redux/friendsPage-reducer';
-import Friends from './Friends';
+import Friends from './FriendsC';
 import styles from './Friends.module.css';
 
 const mapStateToProps = (state) => {

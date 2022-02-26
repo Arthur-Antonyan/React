@@ -1,58 +1,12 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_FRIENDS = 'SET-FRIENDS';
+// const SET_TOTAL_USERS='SET-TOTAL-USERS'
 
 let initialState = {
-  friends: [
-    // {
-    //   id: 1,
-    //   img: `https://www.w3schools.com/howto/img_avatar.png`,
-    //   followed: false,
-    //   firstName: 'Anton',
-    //   secondName: 'Ishhutin',
-    //   status: 'I am boss',
-    //   locations: {
-    //     country: 'Belarus',
-    //     city: 'Minsk',
-    //   },
-    // },
-    // {
-    //   id: 2,
-    //   img: `https://www.w3schools.com/howto/img_avatar.png`,
-    //   followed: true,
-    //   firstName: 'Armen',
-    //   secondName: 'Nazaryan',
-    //   status: 'I am boss',
-    //   locations: {
-    //     country: 'Belarus',
-    //     city: 'Minsk',
-    //   },
-    // },
-    // {
-    //   id: 3,
-    //   img: `https://www.w3schools.com/howto/img_avatar.png`,
-    //   followed: false,
-    //   firstName: 'Levon',
-    //   secondName: 'Aronyan',
-    //   status: 'I am boss',
-    //   locations: {
-    //     country: 'Belarus',
-    //     city: 'Minsk',
-    //   },
-    // },
-    // {
-    //   id: 4,
-    //   img: `https://www.w3schools.com/howto/img_avatar.png`,
-    //   followed: true,
-    //   firstName: 'Gago',
-    //   secondName: 'Karapet',
-    //   status: 'I am boss',
-    //   locations: {
-    //     country: 'Belarus',
-    //     city: 'Minsk',
-    //   },
-    // },
-  ],
+  friends: [],
+  // pageLength:5,
+  // totalUsers:20
 };
 
 function friendsPageReducer(state = initialState, action) {
@@ -83,6 +37,11 @@ function friendsPageReducer(state = initialState, action) {
         ...state,
         friends: [...state.friends, ...action.friends],
       };
+    // case SET_FRIENDS:
+    // return {
+    //   ...state,
+    //   friends: [...state.friends, ...action.friends],
+    // };
 
     default:
       return state;
@@ -100,3 +59,7 @@ export const unFollowAC = (friendsId) => {
 export const setFriendsAC = (friends) => {
   return { type: SET_FRIENDS, friends };
 };
+
+// export const setTotalUsersAC = (usersCount) => {
+//   return { type: SET_TOTAL_USERS, usersCount };
+// };
