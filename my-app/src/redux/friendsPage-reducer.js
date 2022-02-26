@@ -1,12 +1,14 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_FRIENDS = 'SET-FRIENDS';
-// const SET_TOTAL_USERS='SET-TOTAL-USERS'
+const SET_TOTAL_USERS = 'SET-TOTAL-USERS';
+const SELECT_SPAN = 'SELECT-SPAN';
 
 let initialState = {
   friends: [],
-  // pageLength:5,
-  // totalUsers:20
+  pageLength: 5,
+  totalUsers: 0,
+  currentPage: 1,
 };
 
 function friendsPageReducer(state = initialState, action) {
@@ -35,13 +37,18 @@ function friendsPageReducer(state = initialState, action) {
     case SET_FRIENDS:
       return {
         ...state,
-        friends: [...state.friends, ...action.friends],
+        friends: [...action.friends],
       };
-    // case SET_FRIENDS:
-    // return {
-    //   ...state,
-    //   friends: [...state.friends, ...action.friends],
-    // };
+    case SET_TOTAL_USERS:
+      return {
+        ...state,
+        totalUsers: action.totalUsers,
+      };
+    case SELECT_SPAN:
+      return {
+        ...state,
+        currentPage: action.selectedSpan,
+      };
 
     default:
       return state;
@@ -60,6 +67,10 @@ export const setFriendsAC = (friends) => {
   return { type: SET_FRIENDS, friends };
 };
 
-// export const setTotalUsersAC = (usersCount) => {
-//   return { type: SET_TOTAL_USERS, usersCount };
-// };
+export const setTotalUsersAC = (totalUsers) => {
+  return { type: SET_TOTAL_USERS, totalUsers };
+};
+
+export const changeSelectedAC = (selectedSpan) => {
+  return { type: SELECT_SPAN, selectedSpan };
+};
