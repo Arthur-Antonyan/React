@@ -3,12 +3,14 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_FRIENDS = 'SET-FRIENDS';
 const SET_TOTAL_USERS = 'SET-TOTAL-USERS';
 const SELECT_SPAN = 'SELECT-SPAN';
+const IS_LOADING = 'IS_LOADING';
 
 let initialState = {
   friends: [],
-  pageLength: 5,
+  pageLength: 3,
   totalUsers: 0,
   currentPage: 1,
+  isLoading: false,
 };
 
 function friendsPageReducer(state = initialState, action) {
@@ -49,6 +51,11 @@ function friendsPageReducer(state = initialState, action) {
         ...state,
         currentPage: action.selectedSpan,
       };
+    case IS_LOADING:
+      return {
+        ...state,
+        isLoading: action.isLoading,
+      };
 
     default:
       return state;
@@ -56,21 +63,25 @@ function friendsPageReducer(state = initialState, action) {
 }
 export default friendsPageReducer;
 
-export const followAC = (friendsId) => {
+export const follow = (friendsId) => {
   return { type: FOLLOW, friendsId };
 };
-export const unFollowAC = (friendsId) => {
+export const unfollow = (friendsId) => {
   return { type: UNFOLLOW, friendsId };
 };
 
-export const setFriendsAC = (friends) => {
+export const setFriends = (friends) => {
   return { type: SET_FRIENDS, friends };
 };
 
-export const setTotalUsersAC = (totalUsers) => {
+export const setTotalUsers = (totalUsers) => {
   return { type: SET_TOTAL_USERS, totalUsers };
 };
 
-export const changeSelectedAC = (selectedSpan) => {
+export const changeSelected = (selectedSpan) => {
   return { type: SELECT_SPAN, selectedSpan };
+};
+
+export const isLoadingToggle = (isLoading) => {
+  return { type: IS_LOADING, isLoading };
 };

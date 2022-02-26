@@ -1,16 +1,28 @@
 import React from 'react';
 import styles from './Friends.module.css';
-import * as axios from 'axios';
+import loadgif from '../../assets/images/load.gif';
+import Preloader from '../Preloader/Preloader';
 
-function Friends(props) {
-  function addFriends() {
-    if (props.friends.length == 0) {
-      axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response) => props.setFriends(response.data.items));
-    }
+function FriendsComponent(props) {
+  props.setTotalUsers(30);
+  let pages = [];
+  let pagesAmount = Math.ceil(props.totalUsers / props.pageLength);
+  for (let i = 1; i <= pagesAmount; i++) {
+    pages.push(i);
   }
   return (
     <div>
-      <button onClick={addFriends}>Add Friends</button>
+      <>{props.isLoading ? <Preloader /> : ''}</>
+      <div>
+        {pages.map((item) => {
+          return (
+            <span className={props.currentPage == item ? styles.selected : ''} onClick={() => props.changePages(item)}>
+              {item}
+            </span>
+          );
+        })}
+      </div>
+
       {props.friends.map((item) => {
         return (
           <div key={item.id}>
@@ -54,4 +66,4 @@ function Friends(props) {
     </div>
   );
 }
-export default Friends;
+export default FriendsComponent;
