@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Friends.module.css';
 import loadgif from '../../assets/images/load.gif';
 import Preloader from '../Preloader/Preloader';
+import { NavLink } from 'react-router-dom';
 
 function FriendsComponent(props) {
   props.setTotalUsers(30);
@@ -28,7 +29,12 @@ function FriendsComponent(props) {
           <div key={item.id}>
             <span>
               <div>
-                <img src="https://www.w3schools.com/howto/img_avatar.png" className={styles.img} />
+                <NavLink to={'/profile/' + item.id}>
+                  <img
+                    src={item.photos.small ? item.photos.small : 'https://www.w3schools.com/howto/img_avatar.png'}
+                    className={styles.img}
+                  />
+                </NavLink>
               </div>
               <div>
                 {item.followed ? (

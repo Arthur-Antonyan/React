@@ -1,22 +1,22 @@
-// import React from 'react';
-// import StoreContext from '../../../storeContext';
-// import styles from './MyPosts.module.css';
-// import { Post } from './Post/Post';
+import React from 'react';
+import Preloader from '../../Preloader/Preloader';
+import styles from './MyPosts.module.css';
 
-// export function MyPosts(props) {
-//   let posts = props.store.getState().PostPage.post;
-//   let post = posts.map((item) => <Post text={item.text} like={item.like} />);
-//   return <div className={styles.post}>{post}</div>;
-// }
-
-// export function MyPosts() {
-//   return (
-//     <StoreContext.Consumer>
-//       {(store) => {
-//         let posts = store.getState().PostPage.post;
-//         let post = posts.map((item) => <Post text={item.text} like={item.like} />);
-//         return <div className={styles.post}>{post}</div>;
-//       }}
-//     </StoreContext.Consumer>
-//   );
-// }
+const MyPosts = (props) => {
+  if (!props.profile) {
+    return <Preloader />;
+  }
+  return (
+    <div>
+      <div className={styles.content}>
+        <div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1024px-Image_created_with_a_mobile_phone.png" />
+        </div>
+      </div>
+      <div>
+        <img src={props.profile.photos.small} />
+      </div>
+    </div>
+  );
+};
+export default MyPosts;

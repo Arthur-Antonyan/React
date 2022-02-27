@@ -1,19 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import {
-//   changeSelectedAC,
-//   followAC,
-//   isLoadingAC,
-//   setFriendsAC,
-//   setTotalUsersAC,
-//   unFollowAC,
-// } from '../../redux/friendsPage-reducer';
+
 import { changeSelected, follow, isLoadingToggle, setFriends, setTotalUsers, unfollow } from '../../redux/friendsPage-reducer';
 import styles from './Friends.module.css';
 import * as axios from 'axios';
 import FriendsComponent from './Friends';
 
-class Friends extends React.Component {
+class FriendsContainer extends React.Component {
   componentDidMount() {
     this.props.isLoadingToggle(true);
     axios
@@ -46,7 +39,6 @@ class Friends extends React.Component {
         unfollow={this.props.unfollow}
         follow={this.props.follow}
         changePages={this.changePages}
-        // load={this.props.load}
         isLoading={this.props.isLoading}
       />
     );
@@ -62,23 +54,13 @@ const mapStateToProps = (state) => {
     isLoading: state.FriendsPage.isLoading,
   };
 };
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     follow: (friendsId) => dispatch(followAC(friendsId)),
-//     unfollow: (friendsId) => dispatch(unFollowAC(friendsId)),
-//     setFriends: (friends) => dispatch(setFriendsAC(friends)),
-//     setTotalUsers: (totalUsers) => dispatch(setTotalUsersAC(totalUsers)),
-//     changeSelected: (selectedSpan) => dispatch(changeSelectedAC(selectedSpan)),
-//     load: (isLoading) => dispatch(isLoadingAC(isLoading)),
-//   };
-// };
 
-const FriendsContainer = connect(mapStateToProps, {
+export default connect(mapStateToProps, {
   follow,
   unfollow,
   setFriends,
   setTotalUsers,
   changeSelected,
   isLoadingToggle,
-})(Friends);
-export default FriendsContainer;
+})(FriendsContainer);
+// export default FriendsContainer;

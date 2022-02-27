@@ -7,7 +7,7 @@ const IS_LOADING = 'IS_LOADING';
 
 let initialState = {
   friends: [],
-  pageLength: 3,
+  pageLength: 8,
   totalUsers: 0,
   currentPage: 1,
   isLoading: false,
