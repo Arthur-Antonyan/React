@@ -23,7 +23,7 @@ function App(props) {
           <Routes>
             <Route path="/dialogs/*" element={<Dialogs store={props.store} />} />
             {/* <Route path="/profile/*" element={<Profile store={props.store} />} /> */}
-            <Route path="/profile/:uderId?" element={<ProfileContainer />} />
+            <Route path="/profile/*" element={<ProfileContainer />} />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/news" element={<News />} />
