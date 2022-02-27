@@ -1,4 +1,5 @@
 import { combineReducers, createStore } from 'redux';
+import authReducer from './authReducer';
 import friendsPageReducer from './friendsPage-reducer';
 import messagePageReducer from './messagePage-reducer';
 
@@ -7,6 +8,7 @@ let reducers = combineReducers({
   MessagePage: messagePageReducer,
   PostPage: postPageReducer,
   FriendsPage: friendsPageReducer,
+  auth: authReducer,
 });
 let store = createStore(reducers);
 export default store;
