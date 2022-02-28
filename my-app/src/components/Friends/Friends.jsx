@@ -3,6 +3,7 @@ import styles from './Friends.module.css';
 import loadgif from '../../assets/images/load.gif';
 import Preloader from '../Preloader/Preloader';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 function FriendsComponent(props) {
   props.setTotalUsers(30);
@@ -40,7 +41,16 @@ function FriendsComponent(props) {
                 {item.followed ? (
                   <button
                     onClick={() => {
-                      props.unfollow(item.id);
+                      axios
+                        .delete(`https://social-network.samuraijs.com/api/1.0/follow/` + item.id, {
+                          withCredentials: true,
+                          headers: {
+                            'API-KEY': 'e193afd4-56ed-4d04-aa5a-9d51d09006db',
+                          },
+                        })
+                        .then((response) => {
+                          if (response.data.resultCode === 0) props.unfollow(item.id);
+                        });
                     }}
                   >
                     Unfollow
@@ -48,7 +58,20 @@ function FriendsComponent(props) {
                 ) : (
                   <button
                     onClick={() => {
-                      props.follow(item.id);
+                      axios
+                        .post(
+                          `https://social-network.samuraijs.com/api/1.0/follow/` + item.id,
+                          {},
+                          {
+                            withCredentials: true,
+                            headers: {
+                              'API-KEY': 'e193afd4-56ed-4d04-aa5a-9d51d09006db',
+                            },
+                          }
+                        )
+                        .then((response) => {
+                          if (response.data.resultCode === 0) props.follow(item.id);
+                        });
                     }}
                   >
                     Follow

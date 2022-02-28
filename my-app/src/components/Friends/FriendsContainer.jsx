@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import { changeSelected, follow, isLoadingToggle, setFriends, setTotalUsers, unfollow } from '../../redux/friendsPage-reducer';
 import styles from './Friends.module.css';
 import * as axios from 'axios';
@@ -10,7 +9,9 @@ class FriendsContainer extends React.Component {
   componentDidMount() {
     this.props.isLoadingToggle(true);
     axios
-      .get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageLength}`)
+      .get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageLength}`, {
+        withCredentials: true,
+      })
       .then((response) => {
         this.props.isLoadingToggle(false);
         this.props.setFriends(response.data.items);
@@ -19,7 +20,9 @@ class FriendsContainer extends React.Component {
   changePages = (item) => {
     this.props.isLoadingToggle(true);
     axios
-      .get(`https://social-network.samuraijs.com/api/1.0/users?page=${item}&count=${this.props.pageLength}`)
+      .get(`https://social-network.samuraijs.com/api/1.0/users?page=${item}&count=${this.props.pageLength}`, {
+        withCredentials: true,
+      })
       .then((response) => {
         this.props.isLoadingToggle(false);
         this.props.setFriends(response.data.items);
