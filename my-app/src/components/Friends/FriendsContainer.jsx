@@ -1,32 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeSelected, follow, isLoadingToggle, setFriends, setTotalUsers, unfollow } from '../../redux/friendsPage-reducer';
+import {
+  changeSelected,
+  follow,
+  followingInProgressToggle,
+  isLoadingToggle,
+  setFriends,
+  setTotalUsers,
+  unfollow,
+} from '../../redux/friendsPage-reducer';
 import styles from './Friends.module.css';
-import * as axios from 'axios';
 import FriendsComponent from './Friends';
+import { userAPI } from '../../api/api';
 
 class FriendsContainer extends React.Component {
   componentDidMount() {
     this.props.isLoadingToggle(true);
-    axios
-      .get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageLength}`, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        this.props.isLoadingToggle(false);
-        this.props.setFriends(response.data.items);
-      });
+
+    userAPI.getUsers(this.props.currentPage, this.props.pageLength).then((data) => {
+      this.props.isLoadingToggle(false);
+
+      this.props.setFriends(data.items);
+    });
   }
   changePages = (item) => {
     this.props.isLoadingToggle(true);
-    axios
-      .get(`https://social-network.samuraijs.com/api/1.0/users?page=${item}&count=${this.props.pageLength}`, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        this.props.isLoadingToggle(false);
-        this.props.setFriends(response.data.items);
-      });
+
+    userAPI.getUsers(item, this.props.pageLength).then((data) => {
+      this.props.isLoadingToggle(false);
+
+      this.props.setFriends(data.items);
+    });
 
     this.props.changeSelected(item);
   };
@@ -43,6 +47,8 @@ class FriendsContainer extends React.Component {
         follow={this.props.follow}
         changePages={this.changePages}
         isLoading={this.props.isLoading}
+        isFollowing={this.props.isFollowing}
+        followingInProgressToggle={this.props.followingInProgressToggle}
       />
     );
   }
@@ -55,6 +61,7 @@ const mapStateToProps = (state) => {
     totalUsers: state.FriendsPage.totalUsers,
     currentPage: state.FriendsPage.currentPage,
     isLoading: state.FriendsPage.isLoading,
+    isFollowing: state.FriendsPage.followingInProgress,
   };
 };
 
@@ -65,5 +72,6 @@ export default connect(mapStateToProps, {
   setTotalUsers,
   changeSelected,
   isLoadingToggle,
+  followingInProgressToggle,
 })(FriendsContainer);
 // export default FriendsContainer;

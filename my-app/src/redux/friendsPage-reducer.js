@@ -4,6 +4,7 @@ const SET_FRIENDS = 'SET-FRIENDS';
 const SET_TOTAL_USERS = 'SET-TOTAL-USERS';
 const SELECT_SPAN = 'SELECT-SPAN';
 const IS_LOADING = 'IS_LOADING';
+const IS_FOLLOWING_IN_PROPGRESS = 'IS_FOLLOWING_IN_PROPGRESS';
 
 let initialState = {
   friends: [],
@@ -11,6 +12,7 @@ let initialState = {
   totalUsers: 0,
   currentPage: 1,
   isLoading: false,
+  followingInProgress: [],
 };
 
 function friendsPageReducer(state = initialState, action) {
@@ -56,6 +58,13 @@ function friendsPageReducer(state = initialState, action) {
         ...state,
         isLoading: action.isLoading,
       };
+    case IS_FOLLOWING_IN_PROPGRESS:
+      return {
+        ...state,
+        followingInProgress: action.isFollowing
+          ? [...state.followingInProgress, action.id]
+          : state.followingInProgress.filter((item) => item != action.id),
+      };
 
     default:
       return state;
@@ -84,4 +93,8 @@ export const changeSelected = (selectedSpan) => {
 
 export const isLoadingToggle = (isLoading) => {
   return { type: IS_LOADING, isLoading };
+};
+
+export const followingInProgressToggle = (isFollowing, id) => {
+  return { type: IS_FOLLOWING_IN_PROPGRESS, isFollowing, id };
 };

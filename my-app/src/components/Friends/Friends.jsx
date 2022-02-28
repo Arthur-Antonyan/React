@@ -4,6 +4,7 @@ import loadgif from '../../assets/images/load.gif';
 import Preloader from '../Preloader/Preloader';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
+import { userAPI } from '../../api/api';
 
 function FriendsComponent(props) {
   props.setTotalUsers(30);
@@ -40,38 +41,44 @@ function FriendsComponent(props) {
               <div>
                 {item.followed ? (
                   <button
+                    disabled={props.isFollowing.some((i) => i === item.id)}
                     onClick={() => {
-                      axios
-                        .delete(`https://social-network.samuraijs.com/api/1.0/follow/` + item.id, {
-                          withCredentials: true,
-                          headers: {
-                            'API-KEY': 'e193afd4-56ed-4d04-aa5a-9d51d09006db',
-                          },
-                        })
-                        .then((response) => {
-                          if (response.data.resultCode === 0) props.unfollow(item.id);
-                        });
+                      // axios
+                      //   .delete(`https://social-network.samuraijs.com/api/1.0/follow/` + item.id, {
+                      //     withCredentials: true,
+                      //     headers: {
+                      //       'API-KEY': 'e193afd4-56ed-4d04-aa5a-9d51d09006db',
+                      //     },
+                      //   })
+                      props.followingInProgressToggle(true, item.id);
+                      userAPI.unfollow(item.id).then((data) => {
+                        if (data.resultCode === 0) props.unfollow(item.id);
+                        props.followingInProgressToggle(false, item.id);
+                      });
                     }}
                   >
                     Unfollow
                   </button>
                 ) : (
                   <button
+                    disabled={props.isFollowing.some((i) => i === item.id)}
                     onClick={() => {
-                      axios
-                        .post(
-                          `https://social-network.samuraijs.com/api/1.0/follow/` + item.id,
-                          {},
-                          {
-                            withCredentials: true,
-                            headers: {
-                              'API-KEY': 'e193afd4-56ed-4d04-aa5a-9d51d09006db',
-                            },
-                          }
-                        )
-                        .then((response) => {
-                          if (response.data.resultCode === 0) props.follow(item.id);
-                        });
+                      // axios
+                      //   .post(
+                      //     `https://social-network.samuraijs.com/api/1.0/follow/` + item.id,
+                      //     {},
+                      //     {
+                      //       withCredentials: true,
+                      //       headers: {
+                      //         'API-KEY': 'e193afd4-56ed-4d04-aa5a-9d51d09006db',
+                      //       },
+                      //     }
+                      //   )
+                      props.followingInProgressToggle(true, item.id);
+                      userAPI.follow(item.id).then((data) => {
+                        if (data.resultCode === 0) props.follow(item.id);
+                        props.followingInProgressToggle(false, item.id);
+                      });
                     }}
                   >
                     Follow
