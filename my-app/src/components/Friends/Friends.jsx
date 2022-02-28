@@ -43,18 +43,7 @@ function FriendsComponent(props) {
                   <button
                     disabled={props.isFollowing.some((i) => i === item.id)}
                     onClick={() => {
-                      // axios
-                      //   .delete(`https://social-network.samuraijs.com/api/1.0/follow/` + item.id, {
-                      //     withCredentials: true,
-                      //     headers: {
-                      //       'API-KEY': 'e193afd4-56ed-4d04-aa5a-9d51d09006db',
-                      //     },
-                      //   })
-                      props.followingInProgressToggle(true, item.id);
-                      userAPI.unfollow(item.id).then((data) => {
-                        if (data.resultCode === 0) props.unfollow(item.id);
-                        props.followingInProgressToggle(false, item.id);
-                      });
+                      props.unfollow(item.id);
                     }}
                   >
                     Unfollow
@@ -63,22 +52,7 @@ function FriendsComponent(props) {
                   <button
                     disabled={props.isFollowing.some((i) => i === item.id)}
                     onClick={() => {
-                      // axios
-                      //   .post(
-                      //     `https://social-network.samuraijs.com/api/1.0/follow/` + item.id,
-                      //     {},
-                      //     {
-                      //       withCredentials: true,
-                      //       headers: {
-                      //         'API-KEY': 'e193afd4-56ed-4d04-aa5a-9d51d09006db',
-                      //       },
-                      //     }
-                      //   )
-                      props.followingInProgressToggle(true, item.id);
-                      userAPI.follow(item.id).then((data) => {
-                        if (data.resultCode === 0) props.follow(item.id);
-                        props.followingInProgressToggle(false, item.id);
-                      });
+                      props.follow(item.id);
                     }}
                   >
                     Follow

@@ -9,7 +9,8 @@ import { Profile } from './Content';
 class ProfileContainer extends React.Component {
   componentDidMount() {
     let userId = this.props.match ? this.props.match.params.userId : `22658`;
-    userAPI.getUsersProfileInfo(userId).then((data) => this.props.addProfileInfo(data));
+    // userAPI.getUsersProfileInfo(userId).then((data) => this.props.addProfileInfo(data));
+    this.props.addProfileInfo(userId);
   }
   render() {
     return <Profile {...this.props} profile={this.props.profile} />;

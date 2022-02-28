@@ -1,38 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  changeSelected,
-  follow,
-  followingInProgressToggle,
-  isLoadingToggle,
-  setFriends,
-  setTotalUsers,
-  unfollow,
-} from '../../redux/friendsPage-reducer';
+import { follow, getFriends, setTotalUsers, unfollow } from '../../redux/friendsPage-reducer';
 import styles from './Friends.module.css';
 import FriendsComponent from './Friends';
-import { userAPI } from '../../api/api';
 
 class FriendsContainer extends React.Component {
   componentDidMount() {
-    this.props.isLoadingToggle(true);
-
-    userAPI.getUsers(this.props.currentPage, this.props.pageLength).then((data) => {
-      this.props.isLoadingToggle(false);
-
-      this.props.setFriends(data.items);
-    });
+    this.props.getFriends(this.props.currentPage, this.props.pageLength, null);
   }
   changePages = (item) => {
-    this.props.isLoadingToggle(true);
-
-    userAPI.getUsers(item, this.props.pageLength).then((data) => {
-      this.props.isLoadingToggle(false);
-
-      this.props.setFriends(data.items);
-    });
-
-    this.props.changeSelected(item);
+    this.props.getFriends(null, this.props.pageLength, item);
   };
 
   render() {
@@ -48,7 +25,6 @@ class FriendsContainer extends React.Component {
         changePages={this.changePages}
         isLoading={this.props.isLoading}
         isFollowing={this.props.isFollowing}
-        followingInProgressToggle={this.props.followingInProgressToggle}
       />
     );
   }
@@ -68,10 +44,7 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   follow,
   unfollow,
-  setFriends,
   setTotalUsers,
-  changeSelected,
-  isLoadingToggle,
-  followingInProgressToggle,
+  getFriends,
 })(FriendsContainer);
 // export default FriendsContainer;

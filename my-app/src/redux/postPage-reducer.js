@@ -1,3 +1,5 @@
+import { userAPI } from '../api/api';
+
 const CHANGE_NEW_POST_TEXT = 'CHANGE-NEWPOST-TEXT';
 const ADD_POST = 'ADD-POST';
 const ADD_PROFILE_INFO = 'ADD_PROFILE_INFO';
@@ -42,6 +44,10 @@ export const changeNewPostTextActionCreator = (text) => {
 export const addPOstActionCreator = () => {
   return { type: ADD_POST };
 };
-export const addProfileInfo = (profile) => {
+export const addProfileInfoAC = (profile) => {
   return { type: ADD_PROFILE_INFO, profile };
+};
+
+export const addProfileInfo = (userId) => (dispatch) => {
+  userAPI.getUsersProfileInfo(userId).then((data) => dispatch(addProfileInfoAC(data)));
 };
