@@ -8,7 +8,7 @@ import MyPostsContainer from './ProfileContainer';
 export function Profile(props) {
   return (
     <div>
-      <MyPosts profile={props.profile} />
+      <MyPosts profile={props.profile} status={props.status} setStatus={props.setStatusHoc} />
       {/* <MyPostsContainer /> */}
       <AddPostContainer />
     </div>

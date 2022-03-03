@@ -5,13 +5,24 @@ import styles from './MyPosts.module.css';
 class MyStatus extends React.Component {
   state = {
     reductMode: false,
+    status: this.props.status,
   };
 
-  activate() {
+  activate = () => {
     this.setState({ reductMode: true });
-  }
-  deActivate() {
+  };
+  deActivate = () => {
     this.setState({ reductMode: false });
+    this.props.setStatus(this.state.status);
+  };
+  onStatusChange = (event) => {
+    this.setState({ status: event.currentTarget.value });
+  };
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.status != prevProps.status)
+      this.setState({
+        status: this.props.status,
+      });
   }
 
   render() {
@@ -19,12 +30,12 @@ class MyStatus extends React.Component {
       <div className={styles.status}>
         {!this.state.reductMode && (
           <div>
-            <span onClick={() => this.activate.bind(this)()}>{this.props.value}</span>
+            <span onDoubleClick={this.activate}>{this.props.status || 'no status'}</span>
           </div>
         )}
         {this.state.reductMode && (
           <div>
-            <input autoFocus={true} onBlur={() => this.deActivate.bind(this)()} value={this.props.value} />
+            <input autoFocus={true} onBlur={this.deActivate} value={this.state.status} onChange={this.onStatusChange} />
           </div>
         )}
       </div>

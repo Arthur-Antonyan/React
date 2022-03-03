@@ -12,7 +12,7 @@ let initialState = {
   friends: [],
   pageLength: 8,
   totalUsers: 0,
-  currentPage: 1,
+  currentPage: 2,
   isLoading: false,
   followingInProgress: [],
 };

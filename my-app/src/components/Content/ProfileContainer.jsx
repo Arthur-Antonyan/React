@@ -3,18 +3,26 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Navigate, useMatch } from 'react-router';
 import { userAPI } from '../../api/api';
-import { addProfileInfo } from '../../redux/postPage-reducer';
+import { addProfileInfo, getStatusHoc, setStatusHoc } from '../../redux/postPage-reducer';
 import withAuthHoc from '../hocs/withAuthHoc';
 import { Profile } from './Content';
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let userId = this.props.match ? this.props.match.params.userId : `22658`;
+    let userId = this.props.match ? this.props.match.params.userId : 22629;
+    // let userId = `22629`;
+    // let userId = this.props.match.params.userId;
+    // if (!userId) {
+    //   userId = 22629;
+    // }
     this.props.addProfileInfo(userId);
+
+    this.props.getStatusHoc(userId);
   }
   render() {
-    // if (!this.props.isAuth) return <Navigate to="/login" />;
-    return <Profile {...this.props} profile={this.props.profile} />;
+    return (
+      <Profile {...this.props} profile={this.props.profile} status={this.props.status} setStatus={this.props.setStatusHoc} />
+    );
   }
 }
 const WithAuthRedirect = withAuthHoc(ProfileContainer);
@@ -27,7 +35,8 @@ const mapStateToProps = (state) => {
   return {
     profile: state.PostPage.profile,
     isAuth: state.auth.isAuth,
+    status: state.PostPage.status,
   };
 };
 
-export default connect(mapStateToProps, { addProfileInfo })(ProfileURLMatch); //the error is here
+export default connect(mapStateToProps, { addProfileInfo, getStatusHoc, setStatusHoc })(ProfileURLMatch); //the error is here
