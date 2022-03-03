@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { follow, getFriends, setTotalUsers, unfollow } from '../../redux/friendsPage-reducer';
 import styles from './Friends.module.css';
 import FriendsComponent from './Friends';
+import { Navigate } from 'react-router';
+import withAuthHoc from '../hocs/withAuthHoc';
+import { compose } from 'redux';
 
 class FriendsContainer extends React.Component {
   componentDidMount() {
@@ -13,6 +16,8 @@ class FriendsContainer extends React.Component {
   };
 
   render() {
+    // if (!this.props.isAuth) return <Navigate to="/login" />;
+
     return (
       <FriendsComponent
         setTotalUsers={this.props.setTotalUsers}
@@ -38,13 +43,24 @@ const mapStateToProps = (state) => {
     currentPage: state.FriendsPage.currentPage,
     isLoading: state.FriendsPage.isLoading,
     isFollowing: state.FriendsPage.followingInProgress,
+    isAuth: state.auth.isAuth,
   };
 };
+// let withAuthRedirect = withAuthHoc(FriendsContainer);
 
-export default connect(mapStateToProps, {
-  follow,
-  unfollow,
-  setTotalUsers,
-  getFriends,
-})(FriendsContainer);
-// export default FriendsContainer;
+// export default connect(mapStateToProps, {
+//   follow,
+//   unfollow,
+//   setTotalUsers,
+//   getFriends,
+// })(withAuthRedirect);
+
+export default compose(
+  connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setTotalUsers,
+    getFriends,
+  }),
+  withAuthHoc
+)(FriendsContainer);

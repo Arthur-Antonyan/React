@@ -1,29 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { sendNewMessageActionCreator, writeNewMessageActionCreator } from '../../../redux/messagePage-reducer';
-// import StoreContext from '../../../storeContext';
+
+import withAuthHoc from '../../hocs/withAuthHoc';
+
 import { WriteMessage } from './WriteMessaage';
 
-// export function WriteMessageContainer() {
-//   return (
-//     <StoreContext.Consumer>
-//       {(store) => {
-//         let areaValue = store.getState().MessagePage.newMessage;
-//         const send = () => {
-//           store.dispatch(sendNewMessageActionCreator());
-//         };
-//         const onChange = (text) => {
-//           store.dispatch(writeNewMessageActionCreator(text));
-//         };
-//         return <WriteMessage newMessage={onChange} sendMessage={send} messageAreaValue={areaValue} />;
-//       }}
-//     </StoreContext.Consumer>
-//   );
-// }
+// let withAuthRedirect = withAuthHoc(WriteMessage);
+
 const mapStateToProps = (state) => {
   return {
     messageAreaValue: state.MessagePage.newMessage,
     state: state,
+    isAuth: state.auth.isAuth,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -32,4 +22,6 @@ const mapDispatchToProps = (dispatch) => {
     newMessage: (text) => dispatch(writeNewMessageActionCreator(text)),
   };
 };
-export const WriteMessageContainer = connect(mapStateToProps, mapDispatchToProps)(WriteMessage);
+// export const WriteMessageContainer = connect(mapStateToProps, mapDispatchToProps)(withAuthRedirect);
+
+export default compose(connect(mapStateToProps, mapDispatchToProps), withAuthHoc)(WriteMessage);

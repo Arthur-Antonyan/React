@@ -1,9 +1,10 @@
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import StoreContext from '../../../storeContext';
 import styles from './Users.module.css';
 
-export function User(props) {
-  let users = props.store.getState().MessagePage.user;
+function UserContainer(props) {
+  let users = props.users;
   return users.map((item) => (
     <div className={styles.user}>
       <img src={item.img} alt="ava" />
@@ -12,6 +13,12 @@ export function User(props) {
   ));
 }
 
+const mapStateToProps = (state) => {
+  return {
+    users: state.MessagePage.user,
+  };
+};
+export default connect(mapStateToProps)(UserContainer);
 // export function User() {
 //   return (
 //     <StoreContext.Consumer>

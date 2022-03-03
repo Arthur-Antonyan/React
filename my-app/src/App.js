@@ -9,6 +9,7 @@ import News from './components/News/News';
 import FriendsContainer from './components/Friends/FriendsContainer';
 import ProfileContainer from './components/Content/ProfileContainer';
 import HeaderComponent from './components/Header/HeaderContainer';
+import Login from './components/Login/Login';
 
 function App(props) {
   return (
@@ -19,7 +20,7 @@ function App(props) {
         <Nav store={props.store} />
         <div className="app-wraper-content">
           <Routes>
-            <Route path="/dialogs/*" element={<Dialogs store={props.store} />} />
+            <Route path="/dialogs/*" element={<Dialogs />} />
             {/* <Route path="/profile/*" element={<Profile store={props.store} />} /> */}
             {/* <Route path="/profile/:userId" element={<ProfileContainer />} /> */}
             <Route path="/profile/*" element={<ProfileContainer />} />
@@ -27,6 +28,7 @@ function App(props) {
             <Route path="/settings" element={<Settings />} />
             <Route path="/news" element={<News />} />
             <Route path="/friends" element={<FriendsContainer />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </div>

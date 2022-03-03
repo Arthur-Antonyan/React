@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navigate } from 'react-router';
 import { sendNewMessageActionCreator, writeNewMessageActionCreator } from '../../../redux/messagePage-reducer';
 import styles from './WriteMessage.module.css';
 
@@ -14,15 +15,12 @@ export function WriteMessage(props) {
   ));
   const send = () => {
     props.sendMessage();
-    // props.dispatch({ type: 'SEND-NEW-MESSAGE' });
-    // props.dispatch(sendNewMessageActionCreator());
   };
   const onChange = () => {
     let text = link.current.value;
     props.newMessage(text);
-    // props.dispatch({ type: 'WRITE-NEW-MESSAGE', text: text });
-    // props.dispatch(writeNewMessageActionCreator(text));
   };
+  // if (!props.isAuth) return <Navigate to="/login" />;
   return (
     <div className={styles.write}>
       <div className={styles.newMessages}>
