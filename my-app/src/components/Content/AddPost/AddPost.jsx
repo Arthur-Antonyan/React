@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Post } from '../MyPosts/Post/Post';
 import styles from './AddPost.module.css';
 
@@ -18,7 +17,6 @@ export function AddPost(props) {
   };
   return (
     <div className={styles.content}>
-      {/* <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1024px-Image_created_with_a_mobile_phone.png" /> */}
       <div className={styles.item}>
         <textarea onChange={onChange} ref={link} className={styles.textarea} value={props.areaValue}></textarea>
         <div>

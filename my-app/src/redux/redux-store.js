@@ -3,6 +3,7 @@ import authReducer from './authReducer';
 import friendsPageReducer from './friendsPage-reducer';
 import messagePageReducer from './messagePage-reducer';
 import thunkMiddlewware from 'redux-thunk';
+import { reducer as formReducer } from 'redux-form';
 
 import postPageReducer from './postPage-reducer';
 let reducers = combineReducers({
@@ -10,6 +11,7 @@ let reducers = combineReducers({
   PostPage: postPageReducer,
   FriendsPage: friendsPageReducer,
   auth: authReducer,
+  form: formReducer,
 });
 let store = createStore(reducers, applyMiddleware(thunkMiddlewware));
 
