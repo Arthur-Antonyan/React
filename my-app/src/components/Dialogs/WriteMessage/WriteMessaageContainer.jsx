@@ -18,8 +18,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    sendMessage: () => dispatch(sendNewMessageActionCreator()),
-    newMessage: (text) => dispatch(writeNewMessageActionCreator(text)),
+    sendMessage: (text) => dispatch(sendNewMessageActionCreator(text)),
+    // newMessage: (text) => dispatch(writeNewMessageActionCreator(text)),
   };
 };
 // export const WriteMessageContainer = connect(mapStateToProps, mapDispatchToProps)(withAuthRedirect);

@@ -21,15 +21,15 @@ function postPageReducer(state = initialState, action) {
     case ADD_POST:
       return {
         ...state,
-        post: [...state.post, { id: 3, text: state.newPost, like: 'Like 5' }],
-        newPost: '',
+        post: [...state.post, { id: 3, text: action.text, like: 'Like 5' }],
+        // newPost: '',
       };
 
-    case CHANGE_NEW_POST_TEXT:
-      return {
-        ...state,
-        newPost: action.text,
-      };
+    // case CHANGE_NEW_POST_TEXT:
+    //   return {
+    //     ...state,
+    //     newPost: action.text,
+    //   };
     case ADD_PROFILE_INFO:
       return {
         ...state,
@@ -47,11 +47,11 @@ function postPageReducer(state = initialState, action) {
 }
 export default postPageReducer;
 
-export const changeNewPostTextActionCreator = (text) => {
-  return { type: CHANGE_NEW_POST_TEXT, text: text };
-};
-export const addPOstActionCreator = () => {
-  return { type: ADD_POST };
+// export const changeNewPostTextActionCreator = (text) => {
+//   return { type: CHANGE_NEW_POST_TEXT, text: text };
+// };
+export const addPOstActionCreator = (text) => {
+  return { type: ADD_POST, text };
 };
 export const addProfileInfoAC = (profile) => {
   return { type: ADD_PROFILE_INFO, profile };
