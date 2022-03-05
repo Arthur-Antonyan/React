@@ -1,4 +1,4 @@
-import { userAPI } from '../api/api';
+import { LoginApi, userAPI } from '../api/api';
 
 const ADD_USER_DATA = 'ADD_USER_DATA';
 
@@ -14,7 +14,6 @@ function authReducer(state = initialState, action) {
       return {
         ...state,
         ...action.data,
-        isAuth: true,
       };
 
     default:
@@ -23,15 +22,32 @@ function authReducer(state = initialState, action) {
 }
 export default authReducer;
 
-export const authAC = (id, login, email) => {
-  return { type: ADD_USER_DATA, data: { id, login, email } };
+export const authAC = (id, login, email, trueOrFalse) => {
+  return { type: ADD_USER_DATA, data: { id, login, email, isAuth: trueOrFalse } };
 };
 
 export const authUser = () => (dispatch) => {
   userAPI.setUserInfo().then((data) => {
     if (data.resultCode === 0) {
       let { id, login, email } = data.data;
-      dispatch(authAC(id, login, email));
+      dispatch(authAC(id, login, email, true));
+    }
+  });
+};
+
+export const login =
+  (email, password, rememberMe = false) =>
+  (dispatch) => {
+    LoginApi.login(email, password, rememberMe).then((data) => {
+      if (data.resultCode === 0) {
+        dispatch(authUser());
+      }
+    });
+  };
+export const logOut = () => (dispatch) => {
+  LoginApi.logOut().then((data) => {
+    if (data.resultCode === 0) {
+      dispatch(authAC(null, null, null, false));
     }
   });
 };

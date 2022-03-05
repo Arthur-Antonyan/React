@@ -29,28 +29,12 @@ let initialState = {
 };
 function messagePageReducer(state = initialState, action) {
   switch (action.type) {
-    // case WRITE_NEW_MESSAGE:
-    //   return {
-    //     ...state,
-    //     newMessage: action.text,
-    //   };
-    // state.newMessage = action.text;
-    // return state;
-    // stateCopy.newMessage = action.text;
-
-    // return stateCopy;
-
     case SEND_NEW_MESSAGE:
       return {
         ...state,
         message: [...state.message, { message: action.text }],
         newMessage: '',
       };
-    // stateCopy1.message = [...state.message];
-    // // state.message.push({ message: state.newMessage });
-    // stateCopy1.message.push({ message: stateCopy1.newMessage });
-    // stateCopy1.newMessage = '';
-    // return stateCopy1;
 
     default:
       return state;
@@ -58,9 +42,6 @@ function messagePageReducer(state = initialState, action) {
 }
 export default messagePageReducer;
 
-// export const writeNewMessageActionCreator = (text) => {
-//   return { type: WRITE_NEW_MESSAGE, text: text };
-// };
 export const sendNewMessageActionCreator = (text) => {
   return { type: SEND_NEW_MESSAGE, text };
 };
