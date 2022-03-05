@@ -61,6 +61,6 @@ export default compose(
     unfollow,
     setTotalUsers,
     getFriends,
-  }),
-  withAuthHoc
+  })
+  // withAuthHoc
 )(FriendsContainer);

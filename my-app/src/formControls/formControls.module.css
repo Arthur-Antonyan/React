@@ -6,3 +6,8 @@
 .span {
   color: red;
 }
+.error {
+  color: red;
+  border: 1px solid red;
+  pad: 5px;
+}

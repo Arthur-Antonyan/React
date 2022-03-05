@@ -6,7 +6,6 @@ export function Header(props) {
   //
   const logout = () => {
     props.logOut();
-    if (!props.isAuth) return <Navigate to="/login" />;
   };
 
   return (

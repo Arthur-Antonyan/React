@@ -5,6 +5,8 @@ import { Input } from '../../formControls/formControls';
 import { login } from '../../redux/authReducer';
 import { maxLength, required } from '../../utils/validate';
 import { Navigate } from 'react-router';
+import styles from '../../formControls/formControls.module.css';
+
 const maxLength30 = maxLength(30);
 const LoginForm = (props) => {
   return (
@@ -18,6 +20,7 @@ const LoginForm = (props) => {
       <div>
         <Field name="rememberMe" component={Input} type="checkbox" />
       </div>
+      {props.error && <div className={styles.error}>{props.error}</div>}
       <div>
         <button>Login</button>
       </div>

@@ -1,3 +1,4 @@
+import { stopSubmit } from 'redux-form';
 import { LoginApi, userAPI } from '../api/api';
 
 const ADD_USER_DATA = 'ADD_USER_DATA';
@@ -22,8 +23,8 @@ function authReducer(state = initialState, action) {
 }
 export default authReducer;
 
-export const authAC = (id, login, email, trueOrFalse) => {
-  return { type: ADD_USER_DATA, data: { id, login, email, isAuth: trueOrFalse } };
+export const authAC = (id, login, email, isAuth) => {
+  return { type: ADD_USER_DATA, data: { id, login, email, isAuth } };
 };
 
 export const authUser = () => (dispatch) => {
@@ -41,7 +42,7 @@ export const login =
     LoginApi.login(email, password, rememberMe).then((data) => {
       if (data.resultCode === 0) {
         dispatch(authUser());
-      }
+      } else dispatch(stopSubmit('login', { _error: data.messages[0] }));
     });
   };
 export const logOut = () => (dispatch) => {

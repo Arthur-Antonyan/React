@@ -9,7 +9,7 @@ import { Profile } from './Content';
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let userId = this.props.match ? this.props.match.params.userId : 22629;
+    let userId = this.props.match ? this.props.match.params.userId : this.props.myId;
     // let userId = `22629`;
     // let userId = this.props.match.params.userId;
     // if (!userId) {
@@ -36,6 +36,7 @@ const mapStateToProps = (state) => {
     profile: state.PostPage.profile,
     isAuth: state.auth.isAuth,
     status: state.PostPage.status,
+    myId: state.auth.id,
   };
 };
 
