@@ -28,7 +28,7 @@ export const authAC = (id, login, email, isAuth) => {
 };
 
 export const authUser = () => (dispatch) => {
-  userAPI.setUserInfo().then((data) => {
+  return userAPI.setUserInfo().then((data) => {
     if (data.resultCode === 0) {
       let { id, login, email } = data.data;
       dispatch(authAC(id, login, email, true));

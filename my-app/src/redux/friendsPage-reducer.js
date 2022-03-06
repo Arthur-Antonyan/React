@@ -8,6 +8,7 @@ const SELECT_SPAN = 'SELECT-SPAN';
 const IS_LOADING = 'IS_LOADING';
 const IS_FOLLOWING_IN_PROPGRESS = 'IS_FOLLOWING_IN_PROPGRESS';
 
+//
 let initialState = {
   friends: [],
   pageLength: 8,
@@ -15,10 +16,16 @@ let initialState = {
   currentPage: 2,
   isLoading: false,
   followingInProgress: [],
+  // fake: 10,
 };
 
 function friendsPageReducer(state = initialState, action) {
   switch (action.type) {
+    // case 'FAKE':
+    //   return {
+    //     ...state,
+    //     fake: state.fake + 1,
+    //   };
     case FOLLOW:
       return {
         ...state,

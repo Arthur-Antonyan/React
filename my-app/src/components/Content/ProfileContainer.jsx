@@ -1,8 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { connect } from 'react-redux';
-import { Navigate, useMatch } from 'react-router';
-import { userAPI } from '../../api/api';
+import { useMatch } from 'react-router';
 import { addProfileInfo, getStatusHoc, setStatusHoc } from '../../redux/postPage-reducer';
 import withAuthHoc from '../hocs/withAuthHoc';
 import { Profile } from './Content';
@@ -10,11 +9,7 @@ import { Profile } from './Content';
 class ProfileContainer extends React.Component {
   componentDidMount() {
     let userId = this.props.match ? this.props.match.params.userId : this.props.myId;
-    // let userId = `22629`;
-    // let userId = this.props.match.params.userId;
-    // if (!userId) {
-    //   userId = 22629;
-    // }
+
     this.props.addProfileInfo(userId);
 
     this.props.getStatusHoc(userId);
