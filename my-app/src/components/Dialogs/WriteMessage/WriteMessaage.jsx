@@ -18,7 +18,7 @@ const MessageReduxForm = reduxForm({ form: 'writeMessage' })(Message);
 export function WriteMessage(props) {
   let messages = props.state.MessagePage.message;
   let messageElements = messages.map((item) => (
-    <div className={styles.message}>
+    <div key={item.id} className={styles.message}>
       <p>{item.message}</p>
     </div>
   ));

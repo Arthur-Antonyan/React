@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styles from './MyPosts.module.css';
 
 const MyStatusHook = (props) => {
   const [reductMode, setReducMode] = useState(false);
-  const [status, setStatus] = useState(props.status);
+  const [status, updateStatus] = useState(props.status);
   const activate = () => {
     setReducMode(true);
   };
@@ -15,8 +15,11 @@ const MyStatusHook = (props) => {
   };
 
   const setstatus = (event) => {
-    setStatus(event.currentTarget.value);
+    updateStatus(event.currentTarget.value);
   };
+  useEffect(() => {
+    updateStatus(props.status);
+  }, [props.status]);
   return (
     <div className={styles.status}>
       {!reductMode && (

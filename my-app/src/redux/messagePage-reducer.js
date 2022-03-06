@@ -4,11 +4,9 @@ const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE';
 let initialState = {
   newMessage: '',
   message: [
-    { message: 'Hello albviebieqblqebflqibf' },
-    {
-      message: 'How are flqbflqeibfgiqrb3hot13hgt13hgt3hg34hgoi3;hgo3;hg3ohgf3o41hgf3o1hfg31o4hgf3pigfq3piugfqp3fyou',
-    },
-    { message: 'yo qelbglqebfqlbjqbfqfjhw bfj bf' },
+    { id: 1, message: 'Hello albviebieqblqebflqibf' },
+    { id: 2, message: 'How are flqbflqeibfgiqrb3hot13hgt13hgt3hg34hgoi3;hgo3;hg3ohgf3o41hgf3o1hfg31o4hgf3pigfq3piugfqp3fyou' },
+    { id: 3, message: 'yo qelbglqebfqlbjqbfqfjhw bfj bf' },
   ],
   user: [
     { name: 'John', path: 1, img: 'https://img.lovepik.com/element/45001/3052.png_860.png' },

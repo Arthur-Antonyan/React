@@ -21,7 +21,7 @@ const PostReduxForm = reduxForm({ form: 'addPost' })(PostForm);
 
 export function AddPost(props) {
   let posts = props.state.PostPage.post;
-  let post = posts.map((item) => <Post text={item.text} like={item.like} />);
+  let post = posts.map((item) => <Post key={item.id} text={item.text} like={item.like} />);
 
   const addPost = (text) => {
     props.addPost(text);

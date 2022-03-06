@@ -6,7 +6,7 @@ import styles from './Users.module.css';
 function UserContainer(props) {
   let users = props.users;
   return users.map((item) => (
-    <div className={styles.user}>
+    <div key={item.path} className={styles.user}>
       <img src={item.img} alt="ava" />
       <NavLink to={'/dialogs/' + item.path}>{item.name}</NavLink>
     </div>
