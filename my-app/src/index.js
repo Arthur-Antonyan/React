@@ -7,7 +7,6 @@ import store from './redux/redux-store';
 // import { Provider } from './storeContext';
 import { Provider } from 'react-redux';
 
-// let renderDom = () => {
 ReactDOM.render(
   <Provider store={store}>
     <App store={store} />
@@ -15,12 +14,3 @@ ReactDOM.render(
 
   document.getElementById('root')
 );
-// };
-// renderDom(store.getState());
-// // store.subscribe(renderDom);
-// store.subscribe(() => {
-//   let state = store.getState();
-//   renderDom(state);
-// });
-
-// reportWebVitals();
