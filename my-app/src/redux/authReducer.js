@@ -38,17 +38,18 @@ export const authUser = () => (dispatch) => {
 
 export const login =
   (email, password, rememberMe = false) =>
-  (dispatch) => {
-    LoginApi.login(email, password, rememberMe).then((data) => {
-      if (data.resultCode === 0) {
-        dispatch(authUser());
-      } else dispatch(stopSubmit('login', { _error: data.messages[0] }));
-    });
-  };
-export const logOut = () => (dispatch) => {
-  LoginApi.logOut().then((data) => {
+  async (dispatch) => {
+    const data = await LoginApi.login(email, password, rememberMe);
+
     if (data.resultCode === 0) {
-      dispatch(authAC(null, null, null, false));
-    }
-  });
+      dispatch(authUser());
+    } else dispatch(stopSubmit('login', { _error: data.messages[0] }));
+  };
+
+export const logOut = () => async (dispatch) => {
+  const data = await LoginApi.logOut();
+
+  if (data.resultCode === 0) {
+    dispatch(authAC(null, null, null, false));
+  }
 };
