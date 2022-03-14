@@ -7,6 +7,7 @@ const SET_TOTAL_USERS = 'SET-TOTAL-USERS';
 const SELECT_SPAN = 'SELECT-SPAN';
 const IS_LOADING = 'IS_LOADING';
 const IS_FOLLOWING_IN_PROPGRESS = 'IS_FOLLOWING_IN_PROPGRESS';
+const FAKE = 'FAKE';
 
 //
 let initialState = {
@@ -16,7 +17,7 @@ let initialState = {
   currentPage: 2,
   isLoading: false,
   followingInProgress: [],
-  // fake: 10,
+  fake: 10,
 };
 
 function friendsPageReducer(state = initialState, action) {
@@ -68,6 +69,11 @@ function friendsPageReducer(state = initialState, action) {
         followingInProgress: action.isFollowing
           ? [...state.followingInProgress, action.id]
           : state.followingInProgress.filter((item) => item != action.id),
+      };
+    case FAKE:
+      return {
+        ...state,
+        fake: state.fake++,
       };
 
     default:

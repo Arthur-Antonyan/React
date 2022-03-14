@@ -17,7 +17,10 @@ const MyPosts = (props) => {
       </div>
       <MyStatusHook status={props.status} setStatus={props.setStatus} />
       <div>
-        <img src={props.profile.photos.small} />
+        <img
+          className={styles.img}
+          src={props.profile.photos.small || `https://img.lovepik.com/element/45001/3052.png_860.png`}
+        />
       </div>
     </div>
   );

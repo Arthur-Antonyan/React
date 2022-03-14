@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useMatch } from 'react-router';
 import { addProfileInfo, getStatusHoc, setStatusHoc } from '../../redux/postPage-reducer';
+import { getIsAuth, getMyId, getProfile, getStatus } from '../../redux/postsSelector';
 import withAuthHoc from '../hocs/withAuthHoc';
 import { Profile } from './Content';
 
@@ -15,6 +16,7 @@ class ProfileContainer extends React.Component {
     this.props.getStatusHoc(userId);
   }
   render() {
+    // console.log('render profile');
     return (
       <Profile {...this.props} profile={this.props.profile} status={this.props.status} setStatus={this.props.setStatusHoc} />
     );
@@ -27,11 +29,16 @@ const ProfileURLMatch = (props) => {
 };
 
 const mapStateToProps = (state) => {
+  // console.log('mapStateToProps');
   return {
-    profile: state.PostPage.profile,
-    isAuth: state.auth.isAuth,
-    status: state.PostPage.status,
-    myId: state.auth.id,
+    // profile: state.PostPage.profile,
+    // isAuth: state.auth.isAuth,
+    // status: state.PostPage.status,
+    // myId: state.auth.id,
+    profile: getProfile(state),
+    isAuth: getIsAuth(state),
+    status: getStatus(state),
+    myId: getMyId(state),
   };
 };
 
